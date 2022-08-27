@@ -41,9 +41,19 @@ from collections import deque
 
 # in this search we want to find your cl0sest friend whose name ends in "a"
 # the function below prints True if the name ends in a, otherwise it prints 
-# false
+# 
 def ends_in_a(name):
     return name[-1] == "a"
+
+
+# below is the pseudo code or algorithm for the breath first search
+
+# while queue is not empty
+# get the leftmost member of the queue and check if it ends in a. given that it has not been processed before
+# if yes thats what we are looking for end the loop
+# if not add the members of this member to the queue
+# if the queue is empty return none
+
 
 def search(name):
     search_queue = deque()
