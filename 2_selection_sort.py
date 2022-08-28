@@ -21,7 +21,6 @@ def findSmallest(arr):
     return position
         
 
-
 def selectSort(arr):
     """ 
     this function is used to arrange the elements of an array in
