@@ -73,3 +73,6 @@ def search(name):
     return False
 
 print(search("Vegita"))
+
+# A tree is a special type of graph, where no edges
+# ever point back.

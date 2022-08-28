@@ -1,7 +1,7 @@
 # this file would be divided into 2 section 
 
 
-# --------------------------------------------------#
+# -----------------------------------------------------------------------#
 # 1. Divide and conquer algorithms.
 #  divide and conquer is a technique for solving problems in computer 
 # science that involves breaking a problem into smaller instances. 
@@ -11,7 +11,7 @@
 # search in chapter 1. 
 # Divide and conquer gives you a new way of thinking about problems.
 # below there are examples 
-# -------------------------------------------------#
+# ----------------------------------------------------------------------#
 
 # the example below uses divide and conquer to get the sum of elements
 # in a list.
@@ -79,15 +79,34 @@ print(max_rec(arr))
 # A quick sort algorithm is shown below.
 # #################################################################
 
+
+
+
+# #################################################################
+# algorithm for quicksort
+# ----------------------------------------------------------------
+# making an algorithm for quicksort
+# base case 
+# if the number of element in the list is less than 2 return the list
+
+# recursive case
+# first Pick a pointer - use the first element of the list
+# find the list of element that are greater than or equal to the pointer name it "pointer_plus"
+# fnd the  list of elements that are less than the pointer name it "pointer_minus"
+# return the function for pointer_minus + pointer in list + function pointer_plus
+# #################################################################
+
+
+#
 def quickSort(arr):
     if len(arr) < 2:
         return arr
     else:
         pivot = arr[0]
-        less = [i for i in arr[1:] if i <= pivot]
-        greater = [i for i in arr[1:] if i > pivot]
+        pointer_minus = [i for i in arr[1:] if i < pivot]
+        pointer_plus = [i for i in arr[1:] if i >= pivot]
         
-        return quickSort(less) + [pivot] + quickSort(greater)
+        return quickSort(pointer_minus) + [pivot] + quickSort(pointer_plus)
     
 l = [1,3,45,6,5,6]
 f= quickSort(l)
