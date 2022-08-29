@@ -24,7 +24,6 @@
 
 # implementation of dijkstra's algorithm
 
-import json
 # creating the graph
 graph = {}
 graph["start"] = {} 
@@ -60,11 +59,11 @@ parent["fin"] = None
 ############################################################
 # Algorithm for finding the lowest cost
 # ----------------------------------------------------------
-# loop through the keys of the costs
-# get the cost of each node
-# if it is less than the lowest cost and has not been processed 
-# make it the new lowest cost
-# update the lowest node to the current node
+    # loop through the keys of the costs
+    # get the cost of each node
+    # if it is less than the lowest cost and has not been processed 
+    # make it the new lowest cost
+    # update the lowest node to the current node
 # finally return lowest cost
 ############################################################
 
@@ -79,12 +78,34 @@ def find_lowest_cost(costs):
             lowest_node = node
     return lowest_node
 
+############################################################
+# dirjkstra_algo
+# ----------------------------------------------------------
+# find the lowest cost ndoe
+# while the lowest cost node is not none
+    # get the cost and neighbors of the lowest cost node
+    # loop through the neighbors 
+
+        # add the neighbors cost (relative to the cheapest node) and the cost of 
+        # the cheapest node. name it new_cost.
+
+        # if new_cost is less than the cost of the neighbor (on its own/current cost)
+        # update the cost of neighbor to the new cost, update the parent node of the 
+        # neighbor to cheapest node.
+
+    # after looping through the neighbors of the cheapest node add the cheapest
+    # node to the processed node list to avoid repetitions and infinite loops
+
+# search for a new lowest node amongst the remaining nodes
+# when the while loop is completed return parent and costs.
+############################################################
+
 
 def dirjkstra_algo(costs):
     node = find_lowest_cost(costs)
-    while node is not None:
+    while node:
         cost = costs[node]
-        neighbors = graph[node] #start is here 
+        neighbors = graph[node] 
         
         for n in neighbors.keys():
             new_cost = cost + neighbors[n]
@@ -96,8 +117,7 @@ def dirjkstra_algo(costs):
         
     return f"{parent} - parent\n{costs} - costs"
         
-print(dirjkstra_algo(costs))
-# print(json.dumps(graph, indent=4))
+# print(dirjkstra_algo(costs))
 
 # the new parent table gotten after running the algorithm shows the 
 # path that minimizes cost the most.
