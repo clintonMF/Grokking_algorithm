@@ -76,3 +76,34 @@ print(search("Vegita"))
 
 # A tree is a special type of graph, where no edges
 # ever point back.
+
+
+# the algorithm can also be done without importing deque
+# below lies the code for that algorithm
+
+def ends_with_f(node):
+    return node[-1] == "f"
+
+def add_element_in_node(search_queue, node):
+    for n in graph[node]:
+        search_queue.append(n)
+    return search_queue
+
+def shortest_path(node):
+    search_queue = []
+    search_queue = add_element_in_node(search_queue, node)
+    searched = []
+    
+    while search_queue:
+        cur_node = search_queue.pop()
+        
+        if ends_with_f(cur_node) and cur_node not in searched:
+            print(cur_node, "ends with F")
+            return cur_node
+        else:
+            search_queue = add_element_in_node(search_queue, cur_node)
+            searched.append(cur_node)
+    else:
+        return None
+    
+shortest_path("start")
