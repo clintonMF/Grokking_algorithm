@@ -61,3 +61,43 @@ def greedy_algo(stations, states_needed):
     return required_states
 
 print(greedy_algo(stations, states_needed)) 
+
+# Below is an algorithm for solving the class scheduling problem
+# the code below is very error prone and doesn't handle exceptions
+# do well to use the information given( timetable and available time).
+
+available_time = [9.0, 12.0] 
+
+timetable = {}
+timetable["art"] = [9.0,10.0]
+timetable["english"] = [9.5,10.5]
+timetable["math"] = [10.0,11.0]
+timetable["cs"] = [10.5, 11.5]
+timetable["music"] = [11.0,12.0]
+
+# first is getting the class that starts from the start of the period
+# compare how long this class last to that of the other class that starts from the same period
+# get the smallest of them and set its end period to the new start period.
+# repeat this process again and start period is equal to end period
+
+def show_smallest_time(arr, timetable):
+    smallest_time = float("inf")
+    for subject in arr:
+        time_for_class = timetable[subject][1] - timetable[subject][0]
+        if time_for_class < smallest_time:
+            smallest_time = time_for_class
+            best_subject = subject
+    return best_subject
+
+def scheduling(available_time, timetable):
+    next_class = available_time[0]
+    end_day = available_time[1]
+    subjects = []
+    while  next_class != end_day:
+        subjects_with_start = [subject for subject in timetable.keys() if timetable[subject][0] == next_class]
+        best_subject = show_smallest_time(subjects_with_start, timetable)
+        subjects.append(best_subject)
+        next_class = timetable[best_subject][1]
+    return subjects
+
+print(scheduling(available_time, timetable))
