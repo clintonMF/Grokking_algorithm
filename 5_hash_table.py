@@ -59,7 +59,25 @@ def caching(url):
     else:
         data = get_data_from_server(url)
         cache[url] = data
-        
+# Caching is the process of storing copies of files in a cache, or 
+# temporary storage location, so that they can be accessed more quickly
+
+# it can be employed in speeding the recursive function for fibonacci numbers
+
+def fib_cache(n, cache={}):
+    if n < 2:
+        return n
+    if n in cache:
+        return cache[n]
+    cache[n] = fib_cache(n -1, cache) + fib_cache(n -2, cache)
+    return cache[n]
+
+print(fib_cache(100))
+
+# with the function above we can get fibonacci numbers very quickly
+# the time complexity is reduced from big o of O(2*n) to O(n)
+
+
 #               To recap, hashes are good for
 # • Modeling relationships from one thing to another thing
 # • Filtering out duplicates
