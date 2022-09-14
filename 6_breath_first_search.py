@@ -79,10 +79,10 @@ print(search("Vegita"))
 
 
 # the algorithm can also be done without importing deque
-# below lies the code for that algorithm
+# below lies the code for that algorithm.
 
-def ends_with_f(node):
-    return node[-1] == "f"
+def ends_with_k(node):
+    return node[-1] == "k"
 
 def add_element_in_node(search_queue, node):
     for n in graph[node]:
@@ -97,8 +97,8 @@ def shortest_path(node):
     while search_queue:
         cur_node = search_queue.pop()
         
-        if ends_with_f(cur_node) and cur_node not in searched:
-            print(cur_node, "ends with F")
+        if ends_with_k(cur_node) and cur_node not in searched:
+            print(cur_node, "ends with K")
             return cur_node
         else:
             search_queue = add_element_in_node(search_queue, cur_node)

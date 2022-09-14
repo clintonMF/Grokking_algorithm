@@ -117,7 +117,7 @@ def dirjkstra_algo(costs):
         
     return f"{parent} - parent\n{costs} - costs"
         
-# print(dirjkstra_algo(costs))
+print(dirjkstra_algo(costs))
 
 # the new parent table gotten after running the algorithm shows the 
 # path that minimizes cost the most.
